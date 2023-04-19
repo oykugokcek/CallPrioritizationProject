@@ -1,10 +1,11 @@
-import AdminPanel from "./AdminPanel";
-import Header from "./Header/Header";
 
 function App() {
   return (
     <div className="App">
-      <AdminPanel />
+      <header className="bg-red-200 App-header">
+       Selam Ben Barış
+      </header>
+      <div>123123</div>
     </div>
   );
 }
