@@ -1,13 +1,16 @@
+import AdminPanel from "./AdminPanel";
+import PrivateRouter from "./Containers/PrivateRouter";
+import Login from "./Login";
 
 function App() {
   return (
     <div className="App">
-      <header className="bg-red-200 App-header">
-       Selam Ben Barış
-      </header>
-      <div>123123</div>
+      <PrivateRouter>
+        <AdminPanel />
+      </PrivateRouter>
     </div>
   );
 }
 
+//Private Router authorizeyi kontrol ediyor !
 export default App;
