@@ -1,6 +1,5 @@
 import AdminPanel from "./AdminPanel";
 import PrivateRouter from "./Containers/PrivateRouter";
-import Login from "./Login";
 
 function App() {
   return (

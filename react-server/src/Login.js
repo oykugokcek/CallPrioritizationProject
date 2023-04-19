@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
+  const [data, setData] = useState({});
+  const handleInputChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+  
   const handleLogin = () => {
     // Kullanıcı doğrulama işlemini gerçekleştirme
     // API isteği gönderme veya başka bir doğrulama yöntemi kullanma
@@ -16,16 +18,16 @@ const Login = () => {
         <form>
           <input
             type="text"
+            name="name"
             placeholder="Kullanıcı Adı"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => handleInputChange(e)}
             className="w-full px-4 py-3 rounded-md mb-4 bg-gray-100 focus:outline-none focus:bg-white"
           />
           <input
             type="password"
+            name="password"
             placeholder="Şifre"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => handleInputChange(e)}
             className="w-full px-4 py-3 rounded-md mb-6 bg-gray-100 focus:outline-none focus:bg-white"
           />
           <button
@@ -36,12 +38,6 @@ const Login = () => {
             Giriş Yap
           </button>
         </form>
-        <p className="text-gray-500 mt-4 text-center">
-          Henüz hesabınız yok mu?{" "}
-          <a href="#" className="text-indigo-500 underline">
-            Kaydol
-          </a>
-        </p>
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ function loginCheckPayloadRegist(req, res, next) {
   next();
 }
 
-async function checkExistingUserId(req, res, next) {
+async function checkExistingUserId(req, res, next) { // UserId yerine email gelecek 
   const searchedUser = await db("users as u")
     .leftJoin("roles as r", "u.roleId", "r.roleId")
     .select("u.*", "r.*")
