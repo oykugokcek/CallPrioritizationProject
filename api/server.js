@@ -1,10 +1,9 @@
 const express = require("express");
+const authRouter = require("./auth/authRoutes");
 
 const server = express();
 server.use(express.json());
 
-server.get("/", (req, res) => {
-    res.status(200).json({ message: "Server ayaktadır." });
-  });
+server.use("/auth", authRouter);
 
 module.exports = server;
