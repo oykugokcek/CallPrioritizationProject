@@ -1,7 +1,7 @@
 const express = require("express");
-const authRouter = require("./routes/authRoutes");
-const clientRouter = require("./routes/clientRoute");
-const md = require("./middleware/authMiddleware");
+const authRouter = require("./auth/authRoutes");
+const clientRouter = require("./client/clientRoute");
+const md = require("./auth/authMiddleware");
 
 const server = express();
 server.use(express.json());

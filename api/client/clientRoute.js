@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const md = require("../middleware/authMiddleware");
-const clientModels = require("../models/clientModel");
+const md = require("../auth/authMiddleware");
+const clientModels = require("./clientModel");
 
 router.get("/", (req, res, next) => {
   const { workStartYear, graduate } = req.query;

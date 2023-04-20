@@ -1,6 +1,6 @@
 require("dotenv").config();
 const router = require("express").Router();
-const md = require("../middleware/authMiddleware");
+const md = require("../auth/authMiddleware");
 const db = require("../../data/dbconfig");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
