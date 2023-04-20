@@ -18,6 +18,12 @@ router.post(
       .where("userId", req.body.userId)
       .first();
 
+    const sendUserData = {
+      username: searchedUser.username,
+      rolename: searchedUser.role,
+      photo: searchedUser.photo,
+    };
+
     const passwordCheck = bcrypt.compareSync(
       req.body.password,
       searchedUser.password
@@ -26,9 +32,11 @@ router.post(
     if (passwordCheck) {
       let jeton = generateToken(searchedUser);
       console.log(jeton);
-      res
-        .status(200)
-        .json({ message: `${searchedUser.username} welcome`, token: jeton });
+      res.status(200).json({
+        message: `${searchedUser.username} welcome`,
+        token: jeton,
+        currentUser: sendUserData,
+      });
     } else {
       next({ status: 402, message: `invalid entry` });
     }
@@ -41,7 +49,6 @@ function generateToken(user) {
     username: user.username,
     rolename: user.role,
     email: user.email,
-    photo: user.photo,
   };
 
   let option = {
