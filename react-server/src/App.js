@@ -1,12 +1,15 @@
+import AdminPanel from "./AdminPanel";
+import PrivateRouter from "./Containers/PrivateRouter";
 
 function App() {
   return (
     <div className="App">
-      <header className="bg-red-200 App-header">
-       SELAMLAAAAAAAAAAAAAAAAR
-      </header>
+      <PrivateRouter>
+        <AdminPanel />
+      </PrivateRouter>
     </div>
   );
 }
 
+//Private Router authorizeyi kontrol ediyor !
 export default App;
