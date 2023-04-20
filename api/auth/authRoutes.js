@@ -1,33 +1,11 @@
 require("dotenv").config();
 const router = require("express").Router();
-const md = require("./authMiddleware");
+const md = require("../auth/authMiddleware");
 const db = require("../../data/dbconfig");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const JWT_SECRET = process.env.JWT_SECRET || "shh";
-
-router.post(
-  "/regist",
-  md.loginCheckPayloadRegist,
-  md.checkExistingNewUser,
-  async (req, res, next) => {
-    const hashPassword = bcrypt.hashSync(req.body.password, 8);
-    let newUser = {
-      userId: Math.floor(Math.random() * 1000000),
-      username: req.body.username,
-      email: req.body.email,
-      password: hashPassword,
-      roleId: 3,
-    };
-
-    const [newUserId] = await db("users").insert(newUser);
-
-    const newRegisted = await db("users").where("userId", newUserId).first();
-
-    res.status(201).json(newRegisted);
-  }
-);
 
 router.post(
   "/login",
@@ -63,6 +41,7 @@ function generateToken(user) {
     username: user.username,
     rolename: user.role,
     email: user.email,
+    photo: user.photo,
   };
 
   let option = {
